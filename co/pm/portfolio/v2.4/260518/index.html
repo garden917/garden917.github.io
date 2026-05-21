@@ -104,7 +104,6 @@ a { color: inherit; text-decoration: none; }
   padding: 56px 20px 96px;
 }
 .hero {
-  min-height: calc(100vh - 74px);
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
   align-items: center;
@@ -423,7 +422,7 @@ footer { padding: 56px 0 0; color: var(--faint); font-size: 13px; }
         <div class="case-body">
           <p class="thesis">범용 AI가 아니라 보험 도메인 특화 판단 지원 제품을 검증한 사례입니다.</p>
           <div class="metric-row"><div class="metric"><b>6개사</b><span>국내 AI 솔루션 컨택</span></div><div class="metric"><b>3개사</b><span>솔루션 체크</span></div><div class="metric"><b>5개월</b><span>비딩~PoC 진행</span></div><div class="metric"><b>PoC</b><span>사용 조건·보안 기준 정리</span></div></div>
-          <ul><li>교육팀의 월 수백 건 UW 문의 수동 응대 문제를 AI UW 설계사 센터 프로젝트로 정의</li><li>국내 6개 AI 솔루션 컨택, 3개 솔루션 체크, 실무자 성능 검증 후 올거나이즈 최종 선정. 로민은 비교 후보 중 하나</li><li>약관·인수기준표·상품 FAQ, 보험사별·상품별 계층 구조, RDB + 벡터DB 기반 하이브리드 Agent, 가입 가능 여부 판단 정확도 80% 이상 기준 정리</li><li>PoC는 비개인정보 문서만 업로드하고 AWS US 리전 기본 환경에서 진행, 상용 전환 시 AWS 서울 리전·싱글 테넌트·KMS·DLP 조건을 선결 조건으로 문서화</li><li>PoC 사용 조건, 보안 기준, 커스텀 개발 범위를 분리해 검토하고 의사결정자가 볼 수 있게 정리</li></ul>
+          <ul><li>교육팀의 월 수백 건 UW 문의 수동 응대 문제를 AI UW 설계사 센터 프로젝트로 정의</li><li>국내 6개 AI 솔루션 컨택, 3개 솔루션 체크, 실무자 성능 검증 후 올거나이즈 최종 선정. 로민은 비교 후보 중 하나</li><li>보험 약관·인수기준·상품 FAQ를 기준으로 PoC 데이터 범위와 성공 기준을 정리</li><li>개인정보를 제외한 문서만 사용하도록 범위를 제한하고, 상용 전환 시 필요한 보안·권한·데이터 관리 조건을 선결 조건으로 분리</li><li>PoC 사용 조건, 보안 기준, 커스텀 개발 범위를 의사결정자가 비교할 수 있게 정리</li></ul>
           <div class="tags"><span class="tag">AI 솔루션 비딩</span><span class="tag">하이브리드 Agent</span><span class="tag">보안 검수</span></div>
         </div>
       </details>
@@ -441,7 +440,7 @@ footer { padding: 56px 0 0; color: var(--faint); font-size: 13px; }
         <div class="case-body">
           <p class="thesis">외부 SaaS로 보험사 보유계약 데이터를 내려받는 구조를 보안·기술·운영 리스크 관점에서 다시 설계한 사례.</p>
           <div class="metric-row"><div class="metric"><b>26개</b><span>보험사 계정/파일 리스크</span></div><div class="metric"><b>3~5개</b><span>Phase 1 우선 보험사</span></div><div class="metric"><b>3방식</b><span>스크래핑·RPA·망연계 비교</span></div></div>
-          <ul><li>외부 SaaS가 보험사 ID/PW와 민감정보를 처리하는 보안 리스크를 확인하고 내부 개발 전환 방향을 제안</li><li>스크래핑, RPA, 망연계의 차이와 원수사별 제약을 정리해 팀 의사결정 기준으로 공유</li><li>DB손보·롯데손보 등 우선순위를 정하고, Phase 1 대상 보험사와 Windows 전용 여부·보안 프로그램·OTP/2FA 특이사항을 사전 수집</li><li>코어 웹 오토팀에 보낼 메시지에서 배경, 재검토 요청, 단계적 접근, 운영 분담까지 완성된 협업 구조로 정리</li></ul>
+          <ul><li>외부 SaaS가 보험사 ID/PW와 민감정보를 처리하는 보안 리스크를 확인하고 내부 개발 전환 방향을 제안</li><li>외부 데이터 수신 방식을 보안·운영·내재화 관점에서 비교해 팀 의사결정 기준으로 정리</li><li>우선 적용 대상을 좁히고, 초기 개발과 일상 운영의 역할 분담을 협업 구조로 정리</li></ul>
           <div class="tags"><span class="tag">보안 리스크</span><span class="tag">기술 옵션 비교</span><span class="tag">내부 개발 전환</span></div>
         </div>
       </details>
