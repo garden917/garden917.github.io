@@ -37,7 +37,7 @@ a:hover { color: var(--p5); border-bottom-color: var(--p5); }
 .topnav .brand b { color: var(--text); font-weight: 600; }
 .topnav .right { display: flex; gap: 4px; align-items: center; }
 .topnav .right a, .topnav .right button { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); background: none; border: 1px solid var(--border); border-radius: 4px; padding: 6px 11px; cursor: pointer; }
-.topnav .right a:hover, .topnav .right button:hover { color: var(--text); border-color: var(--border-strong); }
+.topnav .right a:hover, .topnav .right button:hover { color: var(--text); border-color: var(--border-strong); } .topnav .brand, .topnav .right a, .topnav .right button { white-space: nowrap; }
 .topnav .right a.cta { background: var(--p5); color: var(--bg); border-color: var(--p5); }
 .topnav .right a.cta:hover { color: var(--bg); opacity: 0.85; }
 
@@ -320,15 +320,15 @@ footer { margin-top: 64px; padding-top: 22px; border-top: 1px solid var(--border
       <div class="subhead is-new">리드타임 지표 세팅 + 분석 환경 PM 주도 + "30일 골든타임" (2024.05~2025.01)</div>
       <ul>
         <li>코어 DE팀이 토스인슈 데이터를 분석할 수 있도록 <b>AD 계정·시스템 계정·ERP/CRM/CMS DB 접근 경로를 PM이 직접 셋업</b> (2024.05.21~)</li>
-        <li>CMS DB 접근은 별도 스레드로 분리해 지넥슨 측 팔로업, DA의 Sqoop·Jenkins 권한 막힘은 한재현(IT 매니저)에게 직접 요청해 새벽 5시 배치 시간까지 확정</li>
-        <li><b>D'amo 암호화 우회 매칭</b> — ERP <code>scp.DEC_B64('GNX256', perno)</code>를 하둡에서 직접 사용 불가, 김민준(서버)에게 복호화 배치 테이블 <code>dw.ntis_contract_matching</code> 신설 요청 + 이중 매칭 기준(이름+전화 / 이름+생년) 설계</li>
+        <li>CMS DB 접근은 별도 스레드로 분리해 지넥슨 측 팔로업, DA의 Sqoop·Jenkins 권한 막힘은 IT 매니저에게 직접 요청해 새벽 5시 배치 시간까지 확정</li>
+        <li><b>D'amo 암호화 우회 매칭</b> — ERP <code>scp.DEC_B64('GNX256', perno)</code>를 하둡에서 직접 사용 불가, 서버 개발자에게 복호화 배치 테이블 <code>dw.ntis_contract_matching</code> 신설 요청 + 이중 매칭 기준(이름+전화 / 이름+생년) 설계</li>
         <li><b>사업단 정보 우회 조인</b> — <code>com_user_info.counselor_group</code> 오염 확인 후 ERP <code>tbin_empmst → tbin_scd</code> 2단계 우회 경로 발굴</li>
         <li><b>컨택일 정의 직접 설계</b> — 8/27 라이브 배포 전후 데이터 정합성 제약과 9/3 재배정 시 컨택일 null 초기화 운영 이슈를 직접 정리·공유 → 최종 <code>ub_customer_counsel_info</code> 조인 + <code>MIN(reg_dt)</code>로 기준 변경</li>
         <li>취소(`COUNSELOR_REQUEST` 외 3종) vs 삭제(`EXPIRED_STORAGE_PERIOD`) 분류 기준 직접 정의</li>
-        <li>데이터 품질 판단 — 재인입 분석에서 2020년 이상 데이터 발견 → 이준목(CPO) 의견 + 김민준 검증 반영해 V3(22년 2월~) 범위로 결정</li>
+        <li>데이터 품질 판단 — 재인입 분석에서 2020년 이상 데이터 발견 → CPO 의견 + 서버 개발자 검증 반영해 V3(22년 2월~) 범위로 결정</li>
         <li>최종 데이터셋(2024.11.19): 전체 계약 43,620 → 신규 31,295 → 버퍼계정 27,059 → 컨택일 25,994 → <b>유효 20,390 (46.7%)</b></li>
         <li>핵심 인사이트: <b>"계약을 할 고객은 30일 이내 계약하는 비중이 약 70%"</b> → 미컨택 이관 배정 효율화 정책의 데이터 근거</li>
-        <li>분석 로드맵 직접 설계 — 월별 계약DB → 미계약DB → 사업단별 → 종료/진행중 리드타임. <b>백승하·김민준·홍은표·한재현·이성재(코어 DE Head)·이준목(CPO) 4.5개월 협업 리딩</b></li>
+        <li>분석 로드맵 직접 설계 — 월별 계약DB → 미계약DB → 사업단별 → 종료/진행중 리드타임. <b>DA · 서버 개발자(2인) · IT 매니저 · 코어 DE Head · CPO 4.5개월 협업 리딩</b></li>
         <li>2024.11.29 "건강 위기감이 보험 가입 트리거 아닐까"라는 고객 심리 가설로 직접 확장</li>
       </ul>
 
@@ -351,7 +351,7 @@ footer { margin-top: 64px; padding-top: 22px; border-top: 1px solid var(--border
       <div class="subhead">AI UW 설계사 센터 프로젝트 — 1단계 PoC 5개월 전체 주도 (2025.11–2026.04)</div>
       <ul>
         <li>사내 교육팀 월 수백 건 UW 문의 응대 자동화 목적 — 5개월 전체 사이클(요건 정의·서비스 범위·테스트·보안 검수·견적·계약 준비)을 PM이 주도</li>
-        <li>국내 6개사 비딩 → 3개사 솔루션 평가 → 올거나이즈 최종 선정 (실무자 윤대호·박은비 성능 검증 동반)</li>
+        <li>국내 6개사 비딩 → 3개사 솔루션 평가 → 올거나이즈 최종 선정 (실무자 실무자 2인 성능 검증 동반)</li>
         <li>하이브리드 Agent(RDB + 벡터DB) 데이터 구조 직접 이해 및 설계 관여 — PoC 산출물(AI-friendly 데이터셋)이 다른 솔루션으로 전환해도 활용 가능하도록 설계</li>
         <li>보안 검수: PoC는 AWS US 리전 기본 구성으로 진행 / 본계약 선결 조건은 AWS 서울 싱글 테넌트·KMS 키 관리·DLP 비정상 탐지로 정리. 데이터 업로드 범위는 약관·인수기준표 등 비개인정보로 한정</li>
         <li>PoC 비용 구조(용역비 vs 사용료) 직접 분석 후 의사결정자에게 설명, PoC 예상 사용량 월 200건 산정</li>

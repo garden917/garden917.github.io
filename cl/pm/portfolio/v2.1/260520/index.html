@@ -69,7 +69,7 @@ a:hover { color: var(--p5); border-bottom-color: var(--p5); }
 .topnav .brand b { color: var(--text); font-weight: 600; }
 .topnav .right { display: flex; gap: 4px; align-items: center; }
 .topnav .right a, .topnav .right button { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); background: none; border: 1px solid var(--border); border-radius: 4px; padding: 6px 11px; cursor: pointer; transition: all 0.15s; }
-.topnav .right a:hover, .topnav .right button:hover { color: var(--text); border-color: var(--border-strong); }
+.topnav .right a:hover, .topnav .right button:hover { color: var(--text); border-color: var(--border-strong); } .topnav .brand, .topnav .right a, .topnav .right button { white-space: nowrap; }
 
 .layout { display: grid; grid-template-columns: 240px 1fr; max-width: 1180px; margin: 0 auto; gap: 0; }
 
@@ -485,17 +485,17 @@ footer { margin-top: 64px; padding-top: 22px; border-top: 1px solid var(--border
 
         <div class="case-sub">리드타임 분석 환경 셋업 — 분석 가능 조건을 PM이 직접 열음 (P5)</div>
         <div class="case-body">
-          분석 요청을 받은 뒤 쿼리 결과만 기다리지 않고, <b>분석이 가능해지는 전제(권한·계정·DB 접근)를 PM이 직접 셋업</b>. <code>#core-토인슈-data</code> 채널을 열며 이성재(코어 DE Head)에게 AD/시스템 계정·ERP/CRM DB 접근 권한 요청, CMS DB 접근은 별도 스레드로 분리해 지넥슨 측 팔로업, DA의 Sqoop·Jenkins 권한 막힘은 한재현(IT 매니저)에게 직접 요청해 새벽 5시 배치 시간까지 확정.
+          분석 요청을 받은 뒤 쿼리 결과만 기다리지 않고, <b>분석이 가능해지는 전제(권한·계정·DB 접근)를 PM이 직접 셋업</b>. <code>#core-토인슈-data</code> 채널을 열며 코어 DE Head에게 AD/시스템 계정·ERP/CRM DB 접근 권한 요청, CMS DB 접근은 별도 스레드로 분리해 지넥슨 측 팔로업, DA의 Sqoop·Jenkins 권한 막힘은 IT 매니저에게 직접 요청해 새벽 5시 배치 시간까지 확정.
         </div>
 
         <div class="case-sub">매칭 경로·정의 직접 설계 (P4)</div>
         <div class="case-body">
-          <b>D'amo 암호화 우회</b>: ERP <code>scp.DEC_B64('GNX256', perno)</code>를 하둡에서 쓸 수 없어 김민준(서버)에게 복호화 배치 테이블 <code>dw.ntis_contract_matching</code> 신설 요청, 이중 매칭 기준 설계(이름+전화 / 이름+생년). <b>사업단 정보 우회 조인</b>: <code>com_user_info.counselor_group</code>이 오염 → ERP <code>tbin_empmst → tbin_scd</code> 2단계 우회 경로 발굴. <b>컨택일 정의</b>: <code>process_status_cd='00034'</code> 초안 → 8/27 배포 로직 변경 + 9/3 재배정 시 컨택일 null 초기화 운영 이슈를 직접 정리·공유 → 최종 <code>ub_customer_counsel_info</code> 조인 + <code>MIN(reg_dt)</code>로 기준 변경. <b>취소/삭제 분류</b>, <b>V3 이후로 분석 범위 결정(2020년 이상 데이터 발견 + CPO 의견 반영)</b>.
+          <b>D'amo 암호화 우회</b>: ERP <code>scp.DEC_B64('GNX256', perno)</code>를 하둡에서 쓸 수 없어 서버 개발자에게 복호화 배치 테이블 <code>dw.ntis_contract_matching</code> 신설 요청, 이중 매칭 기준 설계(이름+전화 / 이름+생년). <b>사업단 정보 우회 조인</b>: <code>com_user_info.counselor_group</code>이 오염 → ERP <code>tbin_empmst → tbin_scd</code> 2단계 우회 경로 발굴. <b>컨택일 정의</b>: <code>process_status_cd='00034'</code> 초안 → 8/27 배포 로직 변경 + 9/3 재배정 시 컨택일 null 초기화 운영 이슈를 직접 정리·공유 → 최종 <code>ub_customer_counsel_info</code> 조인 + <code>MIN(reg_dt)</code>로 기준 변경. <b>취소/삭제 분류</b>, <b>V3 이후로 분석 범위 결정(2020년 이상 데이터 발견 + CPO 의견 반영)</b>.
         </div>
 
         <div class="case-sub">분석 로드맵 직접 설계 — 단발성이 아니라 다음 질문 (P5)</div>
         <div class="case-body">
-          월별 계약DB 퍼널 리드타임 정리 뒤 <code>추가 정리해보기 &gt;&gt;</code> 스레드를 직접 열어 다음 분석 범위 설계: <b>월별 미계약DB 리드타임</b>, <b>사업단별 계약DB 리드타임</b>, <b>종료/진행중 건 리드타임</b>(2024.12 백승하 후속, 2025.01 진행중 검증도 직접 참여).
+          월별 계약DB 퍼널 리드타임 정리 뒤 <code>추가 정리해보기 &gt;&gt;</code> 스레드를 직접 열어 다음 분석 범위 설계: <b>월별 미계약DB 리드타임</b>, <b>사업단별 계약DB 리드타임</b>, <b>종료/진행중 건 리드타임</b>(2024.12 DA 후속, 2025.01 진행중 검증도 직접 참여).
         </div>
 
         <div class="case-sub">결과 — 30일 골든타임 + 분석 로드맵 확장</div>
