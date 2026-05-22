@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>민정원 · TPM / PM Resume</title>
+<meta name="description" content="민정원 — TPM / Product Platform PM. 9년차. Codex 통합본 v1.3 콘텐츠 + Claude 디자인 시스템 (v2.0).">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono@master/web/css/jetbrains-mono.css">
+<style>
+:root {
+  --bg: #0A0A0B; --surface: #131318; --surface-2: #1C1C23; --surface-3: #25252E;
+  --border: #2A2A33; --border-strong: #3D3D48;
+  --text: #ECECEF; --text-2: #A8A8B0; --text-3: #6B6B74; --text-faint: #46464E;
+  --p1: #A78BFA; --p2: #F472B6; --p3: #34D399; --p4: #FBBF24; --p5: #60A5FA;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans: 'Pretendard Variable', Pretendard, ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+:root[data-theme="light"] {
+  --bg: #FAFAFC; --surface: #FFFFFF; --surface-2: #F4F4F6; --surface-3: #E9E9EE;
+  --border: #E0E0E5; --border-strong: #C8C8CF;
+  --text: #0F0F12; --text-2: #4A4A52; --text-3: #7A7A82; --text-faint: #B5B5BC;
+  --p1: #7C3AED; --p2: #DB2777; --p3: #059669; --p4: #D97706; --p5: #2563EB;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.65; font-size: 15.5px; -webkit-font-smoothing: antialiased; font-feature-settings: 'tnum', 'cv11'; transition: background 0.2s, color 0.2s; }
+.mono, code { font-family: var(--mono); }
+a { color: var(--text); text-decoration: none; border-bottom: 1px dashed var(--border-strong); }
+a:hover { color: var(--p5); border-bottom-color: var(--p5); }
+
+.topnav { position: sticky; top: 0; z-index: 50; background: rgba(10, 10, 11, 0.85); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+:root[data-theme="light"] .topnav { background: rgba(250, 250, 252, 0.85); }
+.topnav-inner { max-width: 1180px; margin: 0 auto; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+.topnav .brand { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-2); border: none; }
+.topnav .brand b { color: var(--text); font-weight: 600; }
+.topnav .right { display: flex; gap: 10px; align-items: center; }
+.topnav .right .nav-group { display: flex; gap: 4px; align-items: center; }
+.topnav .right .nav-group + .nav-group { padding-left: 10px; border-left: 1px solid var(--border); }
+.topnav .right a, .topnav .right button { display: inline-flex; align-items: center; height: 28px; box-sizing: border-box; font-family: var(--mono); font-size: 11px; line-height: 1; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); background: none; border: 1px solid var(--border); border-radius: 4px; padding: 0 11px; cursor: pointer; transition: all 0.15s; }
+.topnav .right a:hover, .topnav .right button:hover { color: var(--text); border-color: var(--border-strong); } .topnav .brand, .topnav .right a, .topnav .right button { white-space: nowrap; }
+.topnav .right a.cta { background: var(--p5); color: var(--bg); border-color: var(--p5); }
+.topnav .right a.cta:hover { color: var(--bg); opacity: 0.85; }
+
+main { max-width: 920px; margin: 0 auto; padding: 56px 28px 96px; }
+
+.hero { margin-bottom: 56px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+.eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--p5); margin-bottom: 18px; }
+.hero h1 { font-size: clamp(40px, 6vw, 60px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 10px; color: var(--text); }
+.hero .role { font-size: 15px; color: var(--text-2); margin-bottom: 18px; letter-spacing: -0.005em; }
+.hero .meta { display: flex; gap: 18px; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; color: var(--text-3); letter-spacing: 0.02em; }
+.hero .meta a { color: var(--text-2); }
+.hero .pattern-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.pchip { display: inline-flex; align-items: center; gap: 8px; padding: 5px 10px 5px 8px; border: 1px solid var(--border); border-radius: 999px; font-family: var(--mono); font-size: 11px; color: var(--text-2); letter-spacing: 0.02em; }
+.pchip .pd { width: 8px; height: 8px; border-radius: 50%; }
+.pchip.p1 .pd { background: var(--p1); }
+.pchip.p2 .pd { background: var(--p2); }
+.pchip.p3 .pd { background: var(--p3); }
+.pchip.p4 .pd { background: var(--p4); }
+.pchip.p5 .pd { background: var(--p5); }
+
+section { margin: 56px 0; }
+section h2 { display: flex; align-items: baseline; gap: 14px; font-size: 24px; font-weight: 700; letter-spacing: -0.025em; margin-bottom: 8px; color: var(--text); }
+section h2 .num { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--text-3); letter-spacing: 0.05em; }
+section h2 .en { font-family: var(--mono); font-size: 13px; font-weight: 400; color: var(--text-3); letter-spacing: 0.05em; margin-left: 6px; }
+.sec-sub { font-size: 14px; color: var(--text-3); margin-bottom: 24px; max-width: 640px; }
+
+.profile p { font-size: 14.5px; color: var(--text); line-height: 1.75; margin-bottom: 12px; }
+.profile p:last-child { margin-bottom: 0; }
+.profile strong { color: var(--text); font-weight: 600; }
+
+.pm-table { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.pm-row { display: grid; grid-template-columns: 220px 1fr; align-items: start; padding: 14px 18px; border-bottom: 1px solid var(--border); gap: 18px; }
+.pm-row:last-child { border-bottom: none; }
+.pm-row .pm-label { display: flex; align-items: center; gap: 10px; }
+.pm-row .pm-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.pm-row .pm-label .pm-pn { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--text-3); letter-spacing: 0.05em; flex-shrink: 0; }
+.pm-row .pm-label .pm-pt { font-size: 13px; color: var(--text); font-weight: 600; letter-spacing: -0.01em; line-height: 1.4; }
+.pm-row.p1 .pm-dot { background: var(--p1); } .pm-row.p1 .pm-pn { color: var(--p1); }
+.pm-row.p2 .pm-dot { background: var(--p2); } .pm-row.p2 .pm-pn { color: var(--p2); }
+.pm-row.p3 .pm-dot { background: var(--p3); } .pm-row.p3 .pm-pn { color: var(--p3); }
+.pm-row.p4 .pm-dot { background: var(--p4); } .pm-row.p4 .pm-pn { color: var(--p4); }
+.pm-row.p5 .pm-dot { background: var(--p5); } .pm-row.p5 .pm-pn { color: var(--p5); }
+.pm-row .pm-evidence { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+.pm-row .pm-evidence b { color: var(--text); font-weight: 600; }
+
+.impact-list { padding-left: 18px; }
+.impact-list li { font-size: 13.5px; color: var(--text-2); line-height: 1.65; margin: 6px 0; }
+.impact-list li b { color: var(--text); font-weight: 600; }
+
+.job { padding: 24px 0; border-bottom: 1px solid var(--border); }
+.job:last-child { border-bottom: none; }
+.job-head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+.job-head .co { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
+.job-head .pd { font-family: var(--mono); font-size: 11px; color: var(--text-3); letter-spacing: 0.05em; }
+.job .position { font-size: 13px; color: var(--text-2); margin-bottom: 10px; }
+.job .subhead { font-family: var(--mono); font-size: 11px; color: var(--p5); letter-spacing: 0.06em; text-transform: uppercase; margin: 16px 0 6px; }
+.job ul { list-style: none; padding: 0; }
+.job li { position: relative; padding-left: 16px; font-size: 13.5px; color: var(--text-2); line-height: 1.65; margin: 4px 0; }
+.job li::before { content: ""; position: absolute; left: 0; top: 9px; width: 4px; height: 4px; border-radius: 50%; background: var(--text-3); }
+.job li b { color: var(--text); font-weight: 600; }
+
+.ws { display: grid; grid-template-columns: 1fr; gap: 8px; }
+.ws-item { display: grid; grid-template-columns: 32px 1fr; gap: 10px; padding: 10px 0; border-bottom: 1px dashed var(--border); font-size: 13.5px; color: var(--text-2); line-height: 1.6; }
+.ws-item:last-child { border-bottom: none; }
+.ws-item .n { font-family: var(--mono); font-size: 11px; color: var(--text-3); letter-spacing: 0.05em; padding-top: 2px; }
+
+.dt-grid { display: grid; grid-template-columns: 160px 1fr; gap: 14px 24px; align-items: start; }
+.dt-grid dt { font-family: var(--mono); font-size: 11px; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; padding-top: 2px; }
+.dt-grid dd { font-size: 13.5px; color: var(--text-2); line-height: 1.6; }
+
+footer { margin-top: 64px; padding-top: 22px; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; color: var(--text-faint); }
+
+@media (max-width: 720px) {
+  main { padding: 36px 22px 72px; }
+  .pm-row { grid-template-columns: 1fr; }
+  .dt-grid { grid-template-columns: 1fr; gap: 4px 0; }
+  .dt-grid dt { margin-top: 12px; }
+  .dt-grid dt:first-child { margin-top: 0; }
+}
+
+@media print {
+  :root {
+    --bg: #ffffff; --surface: #ffffff; --surface-2: #f6f6f8; --surface-3: #ecedef;
+    --border: #d8dde3; --border-strong: #b8bec5;
+    --text: #000000; --text-2: #2a2f36; --text-3: #5a6068; --text-faint: #9499a0;
+  }
+  body { font-size: 10.5pt; background: white; }
+  .topnav { display: none !important; }
+  main { padding: 0 14mm; max-width: none; }
+  .hero { margin-bottom: 16pt; padding-bottom: 12pt; }
+  .hero h1 { font-size: 28pt; margin-bottom: 4pt; }
+  .hero .role { font-size: 10.5pt; margin-bottom: 6pt; }
+  .hero .meta { font-size: 9pt; }
+  section { margin: 16pt 0; page-break-inside: avoid; }
+  section h2 { font-size: 13pt; }
+  .profile p { font-size: 10pt; line-height: 1.55; }
+  .pm-row { padding: 7pt 10pt; }
+  .pm-row .pm-label .pm-pt { font-size: 10pt; }
+  .pm-row .pm-evidence { font-size: 9.5pt; }
+  .impact-list li { font-size: 9.5pt; margin: 2pt 0; }
+  .job { padding: 10pt 0; page-break-inside: avoid; }
+  .job-head .co { font-size: 12pt; }
+  .job-head .pd { font-size: 8.5pt; }
+  .job .position { font-size: 9.5pt; }
+  .job .subhead { font-size: 9pt; }
+  .job li { font-size: 9.5pt; line-height: 1.45; margin: 2pt 0; }
+  .ws-item { font-size: 9.5pt; padding: 4pt 0; }
+  .dt-grid dt, .dt-grid dd { font-size: 9.5pt; }
+  footer { display: none; }
+}
+@page { margin: 14mm; size: A4; }
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="#top"><b>Min Jeong Won</b> — TPM/PM Resume</a>
+    <div class="right">
+      <div class="nav-group">
+        <a href="#summary">Summary</a>
+        <a href="#strengths">Strengths</a>
+        <a href="#impact">Impact</a>
+        <a href="#experience">Experience</a>
+        <a href="#style">Style</a>
+      </div>
+      <div class="nav-group">
+        <a href="/cl/tpm/portfolio/v2.0/260522/">Portfolio</a>
+        <a href="#" class="cta" onclick="window.print(); return false;">Print</a>
+        <button id="themeBtn">Theme</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="eyebrow">TPM / Product Platform PM · 9YR · Insurance/Manufacturing</div>
+    <h1>민정원</h1>
+    <div class="role">Technical Program Manager / Product Platform PM · 9년차</div>
+    <div class="meta">
+      <span>📧 <a href="mailto:min_jungwon@naver.com">min_jungwon@naver.com</a></span>
+      <span>🎓 강남대학교 경제학과</span>
+      <span>🏢 토스인슈어런스 · Product Platform Team / TPM</span>
+    </div>
+    <div class="pattern-row">
+      <span class="pchip p1"><span class="pd"></span>01 제품 문제 재정의</span>
+      <span class="pchip p2"><span class="pd"></span>02 범위·의존성·리스크 구조화</span>
+      <span class="pchip p3"><span class="pd"></span>03 플랫폼 = 제품 관점</span>
+      <span class="pchip p4"><span class="pd"></span>04 외주·내부 R&amp;R</span>
+      <span class="pchip p5"><span class="pd"></span>05 출시 이후 운영까지</span>
+    </div>
+  </section>
+
+  <section class="profile" id="summary">
+    <h2><span class="num">§ 01</span>Summary</h2>
+    <p>ERP, CMS, CRM, FSM, 모바일 앱, AI 업무 시스템처럼 여러 조직과 시스템이 얽힌 환경에서 제품 판단과 프로그램 실행을 함께 해 온 9년차 TPM/PM입니다. 제가 강조하고 싶은 방향은 <strong>복잡한 기술·운영 문제를 제품 관점으로 해석하고 실제 출시·운영 가능한 플랫폼으로 만드는 TPM/PM</strong>입니다.</p>
+    <p>제 강점은 "무엇을 만들지"만 정하는 것이 아니라, <strong>왜 지금 이 문제가 중요한지, 어떤 사용자 행동과 사업 리스크가 걸려 있는지, 어떤 기술·운영 제약을 먼저 풀어야 실제로 출시되고 운영되는지</strong> 판단하는 일입니다. 플랫폼을 내부 도구가 아니라 사업·운영·데이터 흐름을 바꾸는 제품 시스템으로 다룹니다.</p>
+  </section>
+
+  <section id="strengths">
+    <h2><span class="num">§ 02</span>Core Strengths</h2>
+    <p class="sec-sub">TPM/PM 통합 시점에서 가장 자주 작동한 다섯 가지 강점.</p>
+    <div class="pm-table">
+      <div class="pm-row p1">
+        <div class="pm-label"><span class="pm-dot"></span><span class="pm-pn">01</span><span class="pm-pt">복잡한 기술 프로그램을 제품 문제로 다시 정의합니다</span></div>
+        <div class="pm-evidence"><b>CRM 사용률 95%→64.5%</b> 하락을 단순 사용성 문제가 아니라 고객정보 유출, 상담 퍼널 분석 공백, DB 활용 로드맵 붕괴로 이어지는 <b>영업 데이터 인프라 리스크</b>로 정의. 기능 개선보다 사업 손실, 사용자 행동, 데이터 흐름을 기준으로 문제를 다시 잡습니다.</div>
+      </div>
+      <div class="pm-row p2">
+        <div class="pm-label"><span class="pm-dot"></span><span class="pm-pn">02</span><span class="pm-pt">범위, 의존성, 리스크를 실행 가능한 구조로 정리합니다</span></div>
+        <div class="pm-evidence">토스인슈어런스 ERP 도입에서는 입사 직후 흩어진 의사결정 히스토리를 역추적해 <b>도입 목적, 1차 오픈 범위, TF 구성, 보안·운영 우선순위</b>를 정리. 이후 RFP, SRS, 데이터 마이그레이션 기준, 주간보고, 장애 대응 체계를 통해 60명 규모 TF가 같은 기준으로 움직이도록 만들었습니다.</div>
+      </div>
+      <div class="pm-row p3">
+        <div class="pm-label"><span class="pm-dot"></span><span class="pm-pn">03</span><span class="pm-pt">플랫폼을 PM 관점으로 판단합니다</span></div>
+        <div class="pm-evidence">내부 플랫폼을 단순 운영 도구로 보지 않고, <b>사용자 행동과 데이터 흐름을 바꾸는 제품</b>으로 봅니다. CRM v2에서는 고객 리스트, 고객 상세, 보장분석, 네비게이터, 엑셀, 어드민을 영업 퍼널 기준으로 정렬했고, <b>상담신청→버퍼계정→설계사배정→고객컨택→ERP계약의 5단계 퍼널</b>을 정의했습니다.</div>
+      </div>
+      <div class="pm-row p4">
+        <div class="pm-label"><span class="pm-dot"></span><span class="pm-pn">04</span><span class="pm-pt">외주사와 내부 조직이 같은 실행 기준으로 움직이게 합니다</span></div>
+        <div class="pm-evidence">ERP, CMS, 설계사 앱, 세인홈시스 제조 ERP/CRM/FSM처럼 외주사와 내부 조직이 함께 움직이는 프로젝트에서 <b>요구사항, 계약, 산출물, 테스트, 유지보수 기준</b>을 직접 정리. 세인홈시스에서는 OMS/WMS/TMS 어드민과 FSM 앱 범위를 SRS, 메뉴/데이터셋, 마이그레이션 양식, 테스트 시나리오로 구체화했습니다.</div>
+      </div>
+      <div class="pm-row p5">
+        <div class="pm-label"><span class="pm-dot"></span><span class="pm-pn">05</span><span class="pm-pt">출시 이후 운영까지 제품/프로그램 범위로 봅니다</span></div>
+        <div class="pm-evidence">ERP 오픈 이후 <b>4년+ 운영 안정화</b>, 월 100억+ 수수료 정산 CMS 자동화, 지넥슨 ASP 종료 이후 내부 개발 채널 기반 이슈 접수·긴급 대응·현업 공지 체계 전환까지 관리. 설계사 앱은 출시 이후 Android 14/15, Google Play 삭제 위기, 정책·기관 API 대응까지 운영 범위에 포함했습니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact">
+    <h2><span class="num">§ 03</span>Impact</h2>
+    <ul class="impact-list">
+      <li><b>전사 ERP 0→1 구축</b>: 60명 TF, 사용자 3,500명·계약 60만 건 규모 무중단 오픈 — 이후 CRM/CMS/SAP/설계사 앱의 기준 시스템으로 자리 잡음.</li>
+      <li><b>월 100억+ 수수료 정산 CMS 구축</b>: 엑셀 수작업 제거, ERP-CMS-SAP 데이터 싱크 자동화 — 정산을 단순 월말 업무가 아니라 회계 무결성·내부 통제 문제로 정의.</li>
+      <li><b>CRM v2 재구축</b>: 사용률 95%→64.5% 하락을 영업 데이터 인프라 문제로 재정의, 30명+ TF와 3개월 릴리즈 — CRM 논의를 "화면 개선"에서 "영업 데이터와 계약 전환을 관리하는 인프라"로 바꿈.</li>
+      <li><b>상담 DB 187만 건·계약 DB 4.2만 건 분석</b>으로 조직별 계약율과 리드타임 가설 재검증 — 사용자 행동·운영 데이터를 PM 판단 근거로 직접 활용.</li>
+      <li><b>ASP 외주 의존 종료</b>: 소스코드 매입 협의, 명세서 CRM 내재화→CMS 수수료 기능→ERP 완전 내재화 로드맵 설계 — 외주 종료를 단순 계약이 아니라 통제권 확보·단계적 내재화 전략으로.</li>
+      <li><b>세인홈시스 제조 ERP/CRM/FSM 구축</b>: 30명+ TF, QR/GPS 기반 현장 서비스 앱, CS 민원 30% 감소 — 본사·공장·대리점·기사·CS를 가로지르는 하나의 운영 시스템으로 묶음.</li>
+      <li><b>세인홈시스 운영 시스템 구축</b>: SRS·데이터셋·마이그레이션 양식·테스트 시나리오 직접 작성 — 외주 산출물 의존이 아니라 발주자 측에서 산출물 기준 직접 관리.</li>
+      <li><b>설계사 모바일 앱 0→1</b>: 외주 7개사 비교 후 개발사 선정, 계약 후 2개월 만에 MVP 오픈 — 출시 이후 OS·스토어·금융 규제 변화까지 3년+ 운영 책임.</li>
+      <li><b>인켑 기반 IT Manager 전산 문의 자동화 챗봇</b> 도입·Slack 연동·웹 확장 검토 — AI를 단순 도구 도입이 아니라 데이터셋·권한·답변 품질이 있는 운영 제품으로 설계.</li>
+      <li><b>AI UW 센터 PoC 프로젝트</b>: 국내 6개 AI 솔루션 컨택, 3개사 체크, 비교 후보 검토 후 최종 벤더 선정 및 PoC 진행 — PoC와 본계약 보안 조건을 분리해 의사결정 가능한 선택지로 정리.</li>
+    </ul>
+  </section>
+
+  <section id="experience">
+    <h2><span class="num">§ 04</span>Experience</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <div class="co">토스인슈어런스</div>
+        <div class="pd">2022.05 — 현재 · 금융/보험</div>
+      </div>
+      <div class="position">Product Platform Team · TPM / Product Platform PM</div>
+
+      <div class="subhead">ERP/CMS/SAP 프로그램</div>
+      <p style="font-size:13px;color:var(--text-3);line-height:1.6;margin:0 0 8px;">보험 운영 핵심 시스템을 외주 솔루션과 내부 조직이 같은 기준으로 굴러가게 만든 영역. 60명 TF가 같은 판단으로 움직이게 하는 실행 기준을 먼저 만든 것이 핵심.</p>
+      <ul>
+        <li>ERP 도입 목적, 1차 오픈 범위, 보안·운영 우선순위, 데이터 마이그레이션 기준 정의</li>
+        <li>사용자 3,500명, 계약 60만 건 규모 ERP 무중단 오픈 및 이후 4년+ 운영 안정화</li>
+        <li>월 100억+ 수수료 정산 CMS 자동화, ERP-CMS-SAP 데이터 싱크 구조 설계</li>
+        <li>레거시 핵심 시스템 대체, 기존 CRM 유지, 보안 리스크 해소를 1차 범위로 잘라 복잡성 제어</li>
+        <li>RFP, SRS, 수행계획, 주간보고, 실무 인터뷰, 장애 대응 기준으로 외주사·내부 조직 실행 체계 정렬</li>
+      </ul>
+
+      <div class="subhead">CRM v2 / 영업 데이터 플랫폼</div>
+      <p style="font-size:13px;color:var(--text-3);line-height:1.6;margin:0 0 8px;">사용률 하락을 영업 데이터 인프라 리스크로 재정의하고 30명+ TF로 3개월 안에 릴리즈한 영역. 화면 개선이 아니라 영업 퍼널·데이터 흐름을 관리하는 인프라로 본 것이 출발.</p>
+      <ul>
+        <li>CRM 사용률 95%→64.5% 하락을 고객정보, 상담 퍼널, DB 활용 리스크로 재정의</li>
+        <li>ERP-CRM 결합도, 인증, 개인정보 보호 기준 등 기술·보안 리스크를 프로그램 범위에 포함</li>
+        <li>고객 리스트, 상세, 보장분석, 네비게이터, 엑셀, 어드민 등 사용자 흐름 기준으로 CRM v2 백로그 정렬</li>
+        <li>30명+ TF와 3개월 내 CRM v2 릴리즈</li>
+        <li>상담신청→버퍼계정→설계사배정→고객컨택→ERP계약 5단계 퍼널 정의</li>
+        <li>상담 DB 187만 건, 계약 DB 4.2만 건을 분석해 조직별 계약율과 리드타임에 대한 기존 가설 재검증</li>
+      </ul>
+
+      <div class="subhead">설계사 앱 / 외부 플랫폼 운영</div>
+      <p style="font-size:13px;color:var(--text-3);line-height:1.6;margin:0 0 8px;">외부 활동 중 영업 흐름을 끊김 없이 이어주는 인프라로서 설계사 모바일 앱을 0→1. 출시 후 OS·앱스토어·금융 규제 변화까지 3년+ 운영 책임 범위로 다룸.</p>
+      <ul>
+        <li>설계사 모바일 앱 외주 7개사 비교 후 개발사 선정, 계약 후 2개월 만에 MVP 오픈</li>
+        <li>외부 활동 중 고객 확인, 연락, 상담 입력에 집중하도록 MVP 범위 절단</li>
+        <li>Android 14/15, Google Play 삭제 위기, 금소법, 기관 API 호출 정책 등 출시 이후 운영 이슈 대응</li>
+        <li>제조 FSM 경험을 보험 설계사 영업지원 앱의 현장 UX·운영 흐름으로 전이</li>
+      </ul>
+
+      <div class="subhead">AI 업무 시스템 / 외주 내재화</div>
+      <p style="font-size:13px;color:var(--text-3);line-height:1.6;margin:0 0 8px;">AI를 단순 도구 도입이 아니라 데이터셋·보안·답변 품질이 있는 운영 제품으로. 동시에 5년 누적 외주 ASP 종료를 단순 계약이 아니라 통제권 확보·단계적 내재화 전략으로 정리한 영역.</p>
+      <ul>
+        <li>인켑 기반 IT Manager 전산 문의 자동화 챗봇 도입, Slack 연동, 데이터셋 오류 수정, 웹 확장 검토, 관리자 권한 정리</li>
+        <li>AI UW 센터 PoC 프로젝트에서 국내 6개 AI 솔루션 컨택, 3개사 체크, 실무자 성능 검증 후 최종 벤더 선정</li>
+        <li>보험 약관·인수기준·상품 FAQ를 기준으로 PoC 데이터 범위, 성공 기준, 보안 조건을 정리</li>
+        <li>5년간 누적된 외주 구조적 문제를 증적 기반으로 정리해 ASP 종료와 소스코드 매입 협상 근거로 활용</li>
+        <li>지넥슨 ASP 종료 후 내부 개발 채널 기반 이슈 접수, 긴급 대응, 현업 공지 체계로 운영 전환</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div class="co">세인홈시스</div>
+        <div class="pd">2021.02 — 2022.02 · 가전 제조 / 오프라인 CS</div>
+      </div>
+      <div class="position">서비스 기획팀, 프로 / TPM</div>
+      <ul>
+        <li>30명+ TF로 제조사 ERP-CRM 통합 시스템 및 현장 서비스 관리(FSM) 모바일 앱 구축</li>
+        <li>OMS/WMS/TMS 어드민과 FSM 앱 범위를 SRS, 메뉴/데이터셋, 마이그레이션 수식 레이아웃, 테스트 시나리오로 구체화</li>
+        <li>QR/GPS 기반 방문 확인, 기사 배정, 알림톡, 현장 수불, 설치/수리 완료 흐름 디지털화</li>
+        <li>APP/CRM/DB 서버 운영, 일일 백업, 장애 처리 기준, 원본소스 현행화를 포함한 1년 유지보수 계약 협상·체결</li>
+        <li>CS 민원 30% 감소, 전국 대리점 수불과 현장 서비스 흐름 가시화</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div class="co">집닥</div>
+        <div class="pd">2019.04 — 2020.12 · 인테리어 플랫폼</div>
+      </div>
+      <div class="position">사업기획팀, 매니저 / PM</div>
+      <ul>
+        <li>CAC·LTV·ROI 분석으로 만성 적자 BM의 한계수익 체감 진단</li>
+        <li>고객 DB 등급제와 파트너 등급제 설계, 리드→매칭→시공 전환율과 수익 구조 개선</li>
+        <li>2017~2019년 계약 5,388건, 민원 1,010건, 민원 세분화 1,877건 분석</li>
+        <li>민원 유형 6개, 강도 3개, 공종 17개, 귀책 2개 기준으로 민원 분류 체계 재설계 및 CMS 반영 제안</li>
+        <li>부분공사 신사업 견적계산기 항목 정리: 16개 공사 종류와 세부 옵션·단가 구조 설계</li>
+        <li>3개년 시스템 구축 로드맵과 전사 OKR 정렬, 플랫폼 BEP 달성에 기여</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div class="co">더존 키컴</div>
+        <div class="pd">2017.05 — 2018.10 · 회계 시스템 / 웹팩스 / 스마트UMS</div>
+      </div>
+      <div class="position">사업 기획팀, 사원 / PM</div>
+      <ul>
+        <li>신규 제품·서비스 프로모션 기획 및 예상 매출·손익 시뮬레이션</li>
+        <li>고객 만족도 전수 조사와 인터뷰 운영, 개선 과제 도출</li>
+        <li>신원이노베이션 스마트UMS 홍보세미나 운영 및 설문지 직접 설계</li>
+        <li>세미나 참석자 대상 무료포인트 1,520pt 후속 사용 마케팅 캠페인 총괄</li>
+        <li>VIP 핵심 고객 전용 솔루션 및 신규 플랫폼 서비스 PoC/런칭 기획</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="style">
+    <h2><span class="num">§ 05</span>일하는 기준 <span class="en">Working Style</span></h2>
+    <div class="ws">
+      <div class="ws-item"><div class="n">01</div><div><b>TPM 실행력과 PM 제품 판단을 함께 써야 하는 Product Platform 영역</b>에서 강점을 냅니다.</div></div>
+      <div class="ws-item"><div class="n">02</div><div>프로그램의 첫 단계는 요구사항 수집이 아니라 목적, 범위, 리스크, 의존성 정의라고 봅니다.</div></div>
+      <div class="ws-item"><div class="n">03</div><div>기술 이슈를 개발팀 안에만 두지 않고 사업·운영·보안·데이터 리스크로 번역합니다.</div></div>
+      <div class="ws-item"><div class="n">04</div><div>외주사와 내부 조직의 책임 경계를 문서화하고, 회의체·보고·장애 대응·유지보수 기준을 운영 체계로 만듭니다.</div></div>
+      <div class="ws-item"><div class="n">05</div><div>플랫폼은 내부 도구가 아니라 <b>사용자 행동, 데이터 정합성, 운영 속도를 바꾸는 제품</b>이라고 봅니다.</div></div>
+      <div class="ws-item"><div class="n">06</div><div>출시 이후 장애, 권한, 공지, 정책 대응, 데이터 품질까지 프로그램 책임 범위에 포함합니다.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">§ 06</span>Domain &amp; Tools</h2>
+    <dl class="dt-grid">
+      <dt>Domain</dt>
+      <dd>보험 · ERP/CRM/CMS · 정산·회계 · AI 업무 자동화 · 모바일 앱 · 제조 FSM · 인테리어 플랫폼 · 회계 시스템</dd>
+      <dt>Product / Collab</dt>
+      <dd>Notion · Jira · Slack · Google Workspace · Figma</dd>
+      <dt>AI</dt>
+      <dd>Codex · Claude Code · Claude · Gemini · Figma Make</dd>
+      <dt>Analytics / Monitor</dt>
+      <dd>Grafana · Kibana · Graylog · Amplitude · GA</dd>
+      <dt>Infra / Security</dt>
+      <dd>접근권한 · 인증 · 보안 검수 · 운영 안정성 기준</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2><span class="num">§ 07</span>Education</h2>
+    <dl class="dt-grid">
+      <dt>강남대학교</dt>
+      <dd>경제학과 · 2008.03 — 2015.07</dd>
+    </dl>
+  </section>
+
+  <footer>claude-tpm-pm-v2.0 · 2026-05-22 · Codex 통합본 v1.3 콘텐츠 + Claude 디자인 시스템 · TPM + Product Platform PM 합본 · pretendard + jetbrains mono · ⌘+P → PDF</footer>
+</main>
+
+<script>
+const html = document.documentElement;
+const btn = document.getElementById('themeBtn');
+function setTheme(mode) {
+  if (mode === 'system') html.removeAttribute('data-theme');
+  else html.setAttribute('data-theme', mode);
+  localStorage.setItem('theme', mode);
+  btn.textContent = mode === 'system' ? 'Auto' : (mode === 'dark' ? 'Dark' : 'Light');
+}
+setTheme(localStorage.getItem('theme') || 'dark');
+btn.addEventListener('click', () => {
+  const cur = localStorage.getItem('theme') || 'dark';
+  const next = cur === 'dark' ? 'light' : cur === 'light' ? 'system' : 'dark';
+  setTheme(next);
+});
+</script>
+</body>
+</html>
