@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>민정원 · TPM / PM Portfolio v2.3</title>
+<meta name="description" content="민정원 Technical Program Manager / Product Platform PM 포트폴리오.">
+<style>
+:root {
+  --bg: #f6f8fb;
+  --panel: #ffffff;
+  --panel-2: #eef3f8;
+  --ink: #101828;
+  --muted: #5b6678;
+  --faint: #8a94a6;
+  --line: #d9e1ec;
+  --blue: #1f6feb;
+  --green: #16794c;
+  --red: #b54708;
+  --violet: #6842c2;
+  --shadow: 0 14px 36px rgba(16, 24, 40, .08);
+}
+:root[data-theme="dark"] {
+  --bg: #0d1117;
+  --panel: #151b23;
+  --panel-2: #111820;
+  --ink: #eef4ff;
+  --muted: #a7b2c3;
+  --faint: #748096;
+  --line: #2a3443;
+  --blue: #6aa6ff;
+  --green: #50d18d;
+  --red: #ffb86b;
+  --violet: #b197ff;
+  --shadow: none;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; width: 100%; overflow-x: hidden; }
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    linear-gradient(90deg, rgba(31,111,235,.06) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(31,111,235,.045) 1px, transparent 1px),
+    var(--bg);
+  background-size: 40px 40px;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+  line-height: 1.62;
+}
+main, section, article, div, p, h1, h2, h3 { min-width: 0; }
+a { color: inherit; text-decoration: none; }
+.progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  z-index: 90;
+  background: linear-gradient(90deg, var(--blue), var(--green));
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(16px);
+}
+.topbar-inner {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 13px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+.brand { font-weight: 850; letter-spacing: 0; }
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+.nav-section, .nav-utils { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.nav-utils { padding-left: 12px; border-left: 1px solid var(--line); }
+.actions a, .actions button, .ghost {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 11px;
+  background: var(--panel);
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.actions a:hover, .actions button:hover, .ghost:hover { color: var(--ink); border-color: var(--blue); }
+.actions .print { background: var(--blue); border-color: var(--blue); color: #fff; font-weight: 800; }
+.actions .utility { font-weight: 750; color: var(--ink); }
+.wrap {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 20px 72px;
+}
+.hero {
+  min-height: 560px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  align-items: center;
+  gap: 34px;
+}
+.hero > * { min-width: 0; }
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+h1 {
+  margin: 0;
+  max-width: 700px;
+  font-size: 48px;
+  line-height: 1.16;
+  letter-spacing: 0;
+  word-break: keep-all;
+}
+.lead {
+  max-width: 700px;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.62;
+  overflow-wrap: anywhere;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.primary {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--blue);
+  border-radius: 8px;
+  padding: 11px 15px;
+  background: var(--blue);
+  color: white;
+  font-weight: 800;
+  font-size: 14px;
+}
+.ghost { border-radius: 8px; padding: 11px 15px; font-weight: 800; color: var(--ink); }
+.signal-board {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--panel) 90%, transparent);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.board-head { padding: 18px; border-bottom: 1px solid var(--line); }
+.board-head h2 { margin: 0 0 8px; font-size: 19px; }
+.board-head p { margin: 0; color: var(--muted); font-size: 14px; }
+.signals { display: grid; grid-template-columns: 1fr 1fr; }
+.signal { min-height: 104px; padding: 15px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.signal:nth-child(2n) { border-right: 0; }
+.signal:nth-last-child(-n+2) { border-bottom: 0; }
+.signal strong { display: block; font-size: 21px; line-height: 1.22; }
+.signal span { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; font-weight: 700; }
+.signal .check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin: 0 0 8px;
+  border-radius: 5px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+}
+.signal:nth-child(2) .check { background: var(--green); }
+.signal:nth-child(3) .check { background: var(--violet); }
+.signal:nth-child(4) .check { background: var(--red); }
+.keywords { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.keyword { padding: 4px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 11px; font-weight: 800; }
+.section {
+  padding: 40px 0 0;
+  scroll-margin-top: 82px;
+}
+.section + .section { margin-top: 34px; border-top: 1px solid var(--line); }
+.section-label { color: var(--blue); font-size: 12px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+.section-title { margin: 6px 0 16px; font-size: 32px; line-height: 1.24; letter-spacing: 0; }
+.section-title.is-supporting { font-size: 26px; letter-spacing: 0; margin-bottom: 10px; }
+.section-copy { max-width: 780px; margin: -6px 0 16px; color: var(--muted); font-size: 16px; }
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.tile, .criterion, .case, .evidence, .fit {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+}
+.tile { padding: 16px; }
+.tile b { display: block; color: var(--blue); font-size: 12px; letter-spacing: .08em; margin-bottom: 10px; }
+.tile p { margin: 0; color: var(--muted); font-size: 14px; }
+.criteria {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.criterion { padding: 16px; }
+.criterion h3 { margin: 0 0 8px; font-size: 17px; }
+.criterion p { margin: 0; color: var(--muted); font-size: 14px; }
+.criterion em { display: block; margin-top: 8px; color: var(--faint); font-size: 13px; font-style: normal; }
+.arc {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--panel);
+}
+.arc-step { padding: 16px; border-right: 1px solid var(--line); }
+.arc-step:last-child { border-right: 0; }
+.arc-step small { color: var(--faint); font-weight: 700; }
+.arc-step h3 { margin: 8px 0 8px; font-size: 17px; }
+.arc-step p { margin: 0; color: var(--muted); font-size: 14px; }
+.case-toolbar {
+  position: sticky;
+  top: 58px;
+  z-index: 30;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: blur(14px);
+}
+.filter {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: var(--panel);
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.filter.is-active { color: white; background: var(--ink); border-color: var(--ink); }
+.case-list { display: grid; gap: 10px; margin-top: 8px; }
+.case { overflow: hidden; }
+.case[hidden] { display: none; }
+.case summary {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+  cursor: pointer;
+}
+.case summary::-webkit-details-marker { display: none; }
+.case-num { color: var(--blue); font-size: 12px; font-weight: 900; letter-spacing: .06em; }
+.case h3 { margin: 0; font-size: 18px; line-height: 1.42; }
+.case-meta { color: var(--faint); font-size: 13px; }
+.case-body { padding: 0 16px 18px 126px; }
+.thesis { margin: 0 0 12px; padding: 12px 14px; border-left: 4px solid var(--blue); border-radius: 0 10px 10px 0; background: var(--panel-2); font-weight: 700; }
+.case-body h4 { margin: 16px 0 6px; color: var(--faint); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+.case-body p, .case-body li { color: var(--muted); font-size: 15px; }
+.case-body ul { padding-left: 1.15rem; }
+.metric-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 8px; margin: 12px 0; }
+.metric { padding: 11px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel-2); }
+.metric b { display: block; font-size: 18px; }
+.metric span { color: var(--muted); font-size: 12px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.tag { padding: 4px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 12px; }
+.evidence-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.evidence { padding: 16px; }
+.evidence h3 { margin: 0 0 8px; color: var(--blue); font-size: 15px; }
+.evidence ul { margin: 0; padding-left: 1.1rem; color: var(--muted); font-size: 14px; }
+.fit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.fit { padding: 16px; }
+.fit h3 { margin: 0 0 8px; font-size: 15px; }
+.fit p { margin: 0; color: var(--muted); font-size: 14px; }
+.final-box { padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); box-shadow: var(--shadow); }
+.final-box p { margin: 0; color: var(--muted); }
+.final-box strong { color: var(--ink); }
+footer { padding: 40px 0 0; color: var(--faint); font-size: 13px; }
+@media (max-width: 920px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .summary-grid, .arc { grid-template-columns: 1fr 1fr; }
+  .criteria, .evidence-grid, .fit-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  body { width: 100%; max-width: 100vw; }
+  .topbar-inner { align-items: flex-start; flex-direction: column; max-width: 390px; margin-left: 0; margin-right: 0; }
+  .actions { width: 100%; max-width: 100%; flex-wrap: wrap; justify-content: flex-start; overflow-x: hidden; padding-bottom: 2px; }
+  .nav-utils { padding-left: 0; border-left: 0; }
+  .actions a, .actions button { flex: 0 0 auto; }
+  .wrap { max-width: 390px; margin-left: 0; margin-right: 0; padding-top: 24px; padding-bottom: 56px; overflow-x: hidden; }
+  .hero, .hero > *, .signal-board { width: 100%; max-width: 100%; }
+  h1 { font-size: 30px; line-height: 1.22; letter-spacing: 0; overflow-wrap: normal; word-break: keep-all; }
+  .section-title { font-size: 26px; }
+  .signal strong { font-size: 21px; }
+  .lead, .board-head p, .tile p, .criterion p, .arc-step p, .case-body p, .case-body li, .evidence li, .fit p, .final-box p {
+    font-size: 17px;
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  .board-head p, .tile p, .criterion p, .arc-step p, .case-body p, .case-body li, .evidence li, .fit p, .final-box p { font-size: 14px; }
+  .signal-board { border-radius: 14px; }
+  .signals, .summary-grid, .arc { grid-template-columns: 1fr; }
+  .signal, .arc-step { border-right: 0; border-bottom: 1px solid var(--line); }
+  .signal:last-child, .arc-step:last-child { border-bottom: 0; }
+  .case-toolbar { top: 105px; overflow-x: auto; flex-wrap: nowrap; }
+  .filter { white-space: nowrap; }
+  .case summary { grid-template-columns: 1fr; gap: 6px; }
+  .case-body { padding: 0 16px 18px; }
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="./">민정원 TPM / PM Portfolio</a>
+    <div class="actions">
+      <nav class="nav-section" aria-label="Portfolio sections">
+        <a href="#criteria">Value</a>
+        <a href="#cases">Programs</a>
+        <a href="#fit">Fit</a>
+        <a href="#summary">Summary</a>
+      </nav>
+      <div class="nav-utils" aria-label="Portfolio utilities">
+        <a class="utility" href="/co/tpm/resume/v2.3/">Resume</a>
+        <button type="button" class="utility" id="themeToggle">Theme</button>
+        <button type="button" class="print" onclick="window.print()">Print</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero" id="top">
+    <div>
+      <p class="eyebrow">Technical Program Manager / Product Platform PM · 9년차</p>
+      <h1>복잡한 제품과 시스템을<br>여러 관점에서 이해하고<br>누구나 쉽게 사용할 수 있게 만드는 사람</h1>
+      <p class="lead">여러 조직의 업무·데이터·권한 흐름이 얽힌 문제를 제품 요구사항과 실행 기준으로 정리해 온 9년차 TPM/PM입니다. ERP, 수수료 정산 시스템, CRM, 설계사 영업지원 앱, 제조 FSM처럼 실제 업무 흐름과 데이터가 이어지는 시스템 구축 프로젝트를 수행해 왔습니다.</p>
+      <div class="hero-actions">
+        <a class="primary" href="#cases">케이스 검토</a>
+        <a class="ghost" href="/co/tpm/resume/v2.3/">이력서 보기</a>
+      </div>
+    </div>
+    <aside class="signal-board" aria-label="Portfolio quick signals">
+      <div class="board-head">
+        <h2>TPM / PM Pattern</h2>
+        <p>기능 현황을 사업·사용자·데이터 관점에서 보고, 구현 범위와 실행 기준을 정리해 외주와 내부 조직이 같은 기준으로 움직이게 만드는 방식.</p>
+        <div class="keywords" aria-label="Impact keywords">
+          <span class="keyword">ERP</span><span class="keyword">CRM</span><span class="keyword">수수료 정산</span><span class="keyword">영업지원 앱</span><span class="keyword">외주</span><span class="keyword">보안</span><span class="keyword">데이터</span><span class="keyword">현장 운영</span>
+        </div>
+      </div>
+      <div class="signals">
+        <div class="signal"><span class="check">✓</span><strong>실행 기준 정리</strong><span>목적, 구현 범위, WBS, UAT, Change Request 기준을 정리해 조직이 움직이게 만듭니다</span></div>
+        <div class="signal"><span class="check">✓</span><strong>문제 정의</strong><span>기능 현황을 사업·사용자·데이터 관점에서 보고 실제 리스크를 정의합니다</span></div>
+        <div class="signal"><span class="check">✓</span><strong>시스템 구축</strong><span>ERP 3,500명·계약 60만 건, 월 100억+ 정산 CMS, CRM v2 30명 TF 릴리즈</span></div>
+        <div class="signal"><span class="check">✓</span><strong>운영 기준 관리</strong><span>릴리즈 이후 장애 대응, 유지보수, 현업 공지 기준까지 관리합니다</span></div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section" id="criteria">
+    <div class="section-label">Program Value</div>
+    <h2 class="section-title">TPM과 PM 두 축으로 검증받고 싶은 기준</h2>
+    <div class="criteria">
+      <article class="criterion"><h3>문제 정의</h3><p>기능 현황을 사업·사용자·데이터 등 다양한 관점에서 보고, 단순 UI 문제가 아니라 어떤 운영/데이터 리스크가 있는지 정의합니다.</p><em>CRM 사용률 95%→64.5% 하락 원인 분석 → CRM v2 리빌드</em></article>
+      <article class="criterion"><h3>실행 기준 정리</h3><p>대형 프로젝트의 목적, 시급도별 구현 범위, 1차 오픈 범위, TF 구성, 보안·운영 우선순위를 정리합니다.</p><em>ERP 도입 목적·오픈 범위·60명 TF 실행 기준 정리</em></article>
+      <article class="criterion"><h3>개발 실행 체계</h3><p>외주사와 내부 개발 조직이 같은 기준으로 움직이도록 RFP, SRS, WBS, UAT, Change Request, SLA 기반 유지보수 기준을 맞춥니다.</p><em>ERP/CMS/설계사 앱 · 세인홈시스 ERP/CRM/FSM</em></article>
+      <article class="criterion"><h3>서비스/사업 분석</h3><p>서비스 플로우를 리드 인입→유효 리드→상담/매칭→계약→운영 품질 단계로 보고, 전환율·ROI·리드 품질을 함께 봅니다.</p><em>집닥 CAC/LTV/ROI · 고객/파트너 등급제 · 토스 리드타임 지표</em></article>
+      <article class="criterion"><h3>릴리즈 이후 운영</h3><p>시스템 오픈을 프로젝트 종료로 보지 않고, 장애 대응·외주 유지보수·Change Request·현업 공지 기준까지 운영 기준으로 관리합니다.</p><em>ERP 4년+ 권한·장애·데이터 싱크 운영 · CMS 정산 운영</em></article>
+      <article class="criterion"><h3>보안·권한·정책 판단</h3><p>보안이나 개인정보 이슈를 승인 절차로만 보지 않고, 사용자 흐름·권한값·법적 근거·데이터 연동 구조를 분리해 출시 가능한 기준으로 정리합니다.</p><em>엑소스피어 PC 보안 · NPS CRM 연동 · 구글챗 권한 노출</em></article>
+    </div>
+  </section>
+
+  <section class="section" id="arc">
+    <div class="section-label">Career Arc</div>
+    <h2 class="section-title">도메인은 바뀌었지만 프로그램을 끝내는 방식은 이어졌습니다</h2>
+    <div class="arc">
+      <article class="arc-step"><small>2017-2018</small><h3>더존 키컴</h3><p>회계 시스템과 웹팩스 사업기획. 손익·고객 조사·솔루션 기획을 통해 사업성과 시스템 감각 형성.</p></article>
+      <article class="arc-step"><small>2019-2020</small><h3>집닥</h3><p>CAC/LTV/ROI, VOC, 견적 로직을 기준으로 플랫폼 BM과 운영 시스템 로드맵을 연결.</p></article>
+      <article class="arc-step"><small>2021-2022</small><h3>세인홈시스</h3><p>OMS/WMS/TMS 어드민과 QR/GPS 기반 FSM 앱을 30명+ TF로 구축. CS 민원 30% 감소.</p></article>
+      <article class="arc-step"><small>2022-현재</small><h3>토스인슈어런스</h3><p>ERP/수수료 정산/CRM/영업지원 앱/AI 기반 업무 지원 PoC를 운영 시스템 관점에서 구축·운영.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="cases">
+    <div class="section-label">Representative Programs</div>
+    <h2 class="section-title">TPM 실행과 PM 판단이 함께 드러나는 대표 프로그램</h2>
+    <p class="section-copy">프로젝트 수를 늘리기보다, 채용자가 “어떤 복잡성을 구조화했고 어떤 제품 판단을 했나”를 따라갈 수 있도록 대표 프로그램 10개만 선별했습니다.</p>
+    <div class="case-toolbar" aria-label="Case filters">
+      <button class="filter is-active" data-filter="all">전체</button>
+      <button class="filter" data-filter="before">토스 이전</button>
+      <button class="filter" data-filter="toss">토스</button>
+      <button class="filter" data-filter="system">시스템/내재화</button>
+      <button class="filter" data-filter="ai-org">AI/조직</button>
+      <button class="filter" id="expandAll">모두 열기</button>
+    </div>
+    <div class="case-list">
+      <details class="case" data-group="toss" open>
+        <summary><span class="case-num">프로그램 01</span><h3>ERP/수수료 정산 시스템: 대형 프로젝트의 목적과 실행 기준을 정리한 프로젝트</h3><span class="case-meta">ERP · 수수료 정산 · SAP 연동</span></summary>
+        <div class="case-body">
+          <p class="thesis">제품 도입 목적, 시급도별 구현 범위, 1차 오픈 기준, TF 실행 기준을 정리해 구 시스템에서 신규 시스템으로 전환한 사례.</p>
+          <div class="metric-row"><div class="metric"><b>3,500명</b><span>ERP 사용자</span></div><div class="metric"><b>60만 건</b><span>계약 데이터</span></div><div class="metric"><b>월 100억+</b><span>CMS 정산</span></div><div class="metric"><b>5개월</b><span>릴리즈</span></div></div>
+          <p>ERP 도입 목적, 시급도별 구현 범위, 1차 오픈 범위, TF 구성, 보안·운영 우선순위를 정리하고 구 시스템 전환 전략과 데이터 마이그레이션 기준을 정의했습니다. RFP/SRS/WBS 기반 주간보고/데이터 마이그레이션/UAT·오픈 기준/장애 대응 기준으로 외주사와 내부 조직의 실행 체계를 맞췄습니다.</p>
+          <ul><li>ERP를 CRM, 수수료 정산 시스템, SAP, 설계사 앱의 기준 시스템으로 정의</li><li>CMS를 월 100억+ 수수료 정산과 ERP-CMS-SAP 데이터 싱크의 핵심 시스템으로 구성</li><li>외주 유지보수 범위, 외주사 운영 정책, 장애 재발방지 정책, 추가 개발 요청을 Change Request로 분리해 범위·일정·우선순위 기준 정리</li></ul>
+          <div class="tags"><span class="tag">대형 프로젝트 실행 기준</span><span class="tag">시스템 전환</span><span class="tag">Vendor Management</span></div>
+        </div>
+      </details>
+      <details class="case" data-group="toss system">
+        <summary><span class="case-num">프로그램 02</span><h3>CRM v2 / 영업 데이터 연동: 기능 현황을 여러 관점에서 재정의</h3><span class="case-meta">CRM · 퍼널</span></summary>
+        <div class="case-body">
+          <p class="thesis">CRM 사용률 하락 원인을 단순 UI 사용성 문제가 아니라 고객정보, 상담 퍼널 분석, DB 활용 로드맵 리스크로 정의하고 CRM v2 리빌드와 후속 지표 체계로 연결한 사례.</p>
+          <div class="metric-row"><div class="metric"><b>95%→64.5%</b><span>사용률 하락</span></div><div class="metric"><b>187만/4.2만</b><span>상담/계약 DB 분석</span></div><div class="metric"><b>46.7%/70%</b><span>유효 퍼널·골든타임</span></div><div class="metric"><b>30명+</b><span>TF · 3개월 릴리즈</span></div></div>
+          <p>구 레거시 시스템 개편 과정에서 ERP-CRM 데이터 연결, 인증, 개인정보 보호 기준 등 기술·보안 리스크를 프로그램 범위에 포함했습니다. CRM 사용률 95%→64.5% 하락 원인은 단순 UI 문제가 아니라 고객정보, 상담 퍼널, DB 활용 리스크로 재정의했습니다.</p>
+          <ul><li>고객 리스트, 고객 상세, 보장분석, 네비게이터, 엑셀, 어드민을 영업 퍼널 기준으로 재정렬</li><li>상담신청→버퍼계정→설계사배정→고객컨택→ERP계약 5단계 퍼널 정의</li><li>CRM/ERP/DW 3개 시스템을 연결한 리드타임 지표 세팅에서 컨택일 정의, 버퍼계정 제외, 취소/파기 기준을 정리</li><li>유효 퍼널 46.7%, 30일 골든타임 70%를 기준으로 컨택 타이밍과 미계약DB·사업단별·종료/진행중 건 후속 분석 로드맵 설계</li></ul>
+          <div class="tags"><span class="tag">전환 지표 설계</span><span class="tag">데이터 수집 기준</span><span class="tag">분석 로드맵</span></div>
+        </div>
+      </details>
+      <details class="case" data-group="toss ai-org">
+        <summary><span class="case-num">프로그램 03</span><h3>AI 기반 업무 지원: 문의 자동화와 UW PoC 검토</h3><span class="case-meta">AI 챗봇 · UW PoC · 업무 지원</span></summary>
+        <div class="case-body">
+          <p class="thesis">AI를 거창한 시스템 구축이 아니라 반복 문의 자동화와 보험 도메인 업무 지원 가능성 검토로 접근한 사례.</p>
+          <div class="metric-row"><div class="metric"><b>6개사</b><span>국내 AI 솔루션 컨택</span></div><div class="metric"><b>3개사</b><span>솔루션 체크</span></div><div class="metric"><b>PoC</b><span>사용 조건·보안 기준 정리</span></div></div>
+          <ul><li>자연어 기반 문의 자동화 처리 AI 챗봇을 도입하고, 프롬프트 세팅, RAG 데이터셋 구성, Slack 연동을 직접 구성</li><li>IT 시스템 문의 채널의 반복 응대를 자동화하는 업무 지원 흐름으로 정리</li><li>AI UW 센터 PoC에서 국내 6개 AI 솔루션 컨택, 3개사 체크, 실무자 성능 검증 후 올거나이즈 선정</li><li>보험 약관·인수기준·상품 FAQ를 기준으로 PoC 데이터 범위와 성공 기준 정리</li><li>PoC 사용 조건, 보안 기준, 데이터 범위를 의사결정자가 비교할 수 있게 정리</li></ul>
+          <div class="tags"><span class="tag">AI 기반 업무 지원</span><span class="tag">PoC 기준 정리</span><span class="tag">RAG 데이터셋</span></div>
+        </div>
+      </details>
+      <details class="case" data-group="toss system">
+        <summary><span class="case-num">프로그램 04</span><h3>설계사 영업지원 앱: 현장 영업 흐름을 모바일 앱으로 구현</h3><span class="case-meta">모바일 앱 · 영업지원</span></summary>
+        <div class="case-body">
+          <p class="thesis">보험설계사가 외부 활동 중 고객 확인, 연락, 상담 입력을 빠르게 할 수 있도록 앱 범위와 후속 페이즈를 설정한 사례.</p>
+          <div class="metric-row"><div class="metric"><b>7개사</b><span>외주 후보 비교</span></div><div class="metric"><b>2개월</b><span>계약 후 MVP 오픈</span></div><div class="metric"><b>3년+</b><span>정책 대응 운영</span></div></div>
+          <ul><li>네이버 페이 보험 페이지 레퍼런스를 활용해 보험설계사 영업 지원 앱 화면 설계 및 기획</li><li>제조 FSM 경험을 보험 설계사 영업지원 앱의 현장 UX·운영 흐름으로 전이</li><li>상담 고객 데이터 모아보기 대시보드와 계약 실적 페이지 연결 구성</li><li>외부 활동 중 고객 확인, 연락, 상담 입력에 집중하도록 MVP 범위 설정 및 추가 프로젝트 페이즈 설정</li><li>구글챗 라이브 오픈 시 ERP 기준 사업단 소속 권한값으로 노출 기준 분리, 설계사·임직원 대상 공지 기능 별도 설계</li></ul>
+          <div class="tags"><span class="tag">영업지원 앱</span><span class="tag">MVP 범위 설정</span><span class="tag">현장 UX</span></div>
+        </div>
+      </details>
+      <details class="case" data-group="toss system">
+        <summary><span class="case-num">프로그램 05</span><h3>원수사 보유계약 데이터 수신 구조 재설계: 외부 SaaS 의존을 내부 통제 가능한 운영 구조로 전환</h3><span class="case-meta">운영 · 보안 · 데이터 · RPA</span></summary>
+        <div class="case-body">
+          <p class="thesis">보험사 보유계약 데이터를 외부 SaaS로 내려받던 구조에서 계정·민감정보·운영 책임 리스크를 발견하고, 망연계·RPA 내재화·현행 유지 3가지 옵션을 비교해 내부 개발 전환 방향과 Phase 1 실행 범위를 정리한 사례.</p>
+          <div class="metric-row"><div class="metric"><b>26개</b><span>보험사 ID/PW 및 민감정보 처리 리스크</span></div><div class="metric"><b>3방식</b><span>망연계 · RPA 내재화 · 외부 SaaS 유지</span></div><div class="metric"><b>3~5개</b><span>Phase 1 우선 보험사 선별</span></div></div>
+          <ul><li>외부 SaaS가 보험사 계정과 보유계약 파일을 처리하는 구조를 보안·운영 리스크로 재정의</li><li>스크래핑, RPA, 망연계의 기술 차이와 원수사별 제약을 정리</li><li>원수사별 Windows 전용 여부, 보안 프로그램, OTP/2FA, 접근 시간 제한 등 운영 변수를 사전 체크 항목으로 구조화</li><li>코어 웹오토팀 협업을 전제로 초기 개발과 일상 운영의 역할 분담을 제안</li><li>한 번에 전체 전환하지 않고 Phase 1 보험사부터 PoC 후 점진 확대하는 실행안을 정리</li></ul>
+          <div class="tags"><span class="tag">원수사 데이터</span><span class="tag">RPA 내재화</span><span class="tag">보안 리스크</span><span class="tag">기술 옵션 비교</span><span class="tag">운영 구조 설계</span></div>
+        </div>
+      </details>
+      <details class="case" data-group="toss system">
+        <summary><span class="case-num">프로그램 06</span><h3>보험 제도 변경 대응: 외부 이벤트를 CRM 액션으로 바꾼 사례</h3><span class="case-meta">CRM · 성장 기회</span></summary>
+        <div class="case-body">
+          <p class="thesis">보험 제도 변경을 단순 공지로 끝내지 않고, 설계사가 바로 실행할 수 있는 CRM 리스트와 스크립트로 번역한 사례.</p>
+          <div class="metric-row"><div class="metric"><b>2일</b><span>운전자보험 고객 리스트 개발</span></div><div class="metric"><b>4전략</b><span>실손 전환 타겟 리스트</span></div><div class="metric"><b>39회</b><span>전략/교육/개발 논의</span></div></div>
+          <ul><li>운전자보험 보장 축소 이슈에 맞춰 리모델링 대상 고객을 빠르게 찾는 CRM 고객 리스트를 이틀 만에 준비하고 현업 공지</li><li>5세대 실손 출시와 4세대 종료 이슈를 뉴스·KIRI 자료로 리서치하고 설계사 영업 전략으로 전환</li><li>1·2세대 재매입, 비급여 청구 고객 리스크 관리, 2030 여성 신규 타겟, 무사고 고객 비용 최적화 등 4가지 리스트와 스크립트 설계</li><li>설계사 의견을 반영해 추가 필터를 만들고 교육팀·전략팀 킥오프까지 조율</li></ul>
+          <div class="tags"><span class="tag">기회 포착</span><span class="tag">CRM 타겟팅</span><span class="tag">현업 실행</span></div>
+        </div>
+      </details>
+      <details class="case" data-group="toss system">
+        <summary><span class="case-num">프로그램 07</span><h3>NPS CRM 연동: 활용 불가 판단을 데이터·정책 구조로 다시 연 사례</h3><span class="case-meta">CRM · 개인정보 · 데이터 연동</span></summary>
+        <div class="case-body">
+          <p class="thesis">식별값 제공 불가로 멈춘 고객 NPS 활용 건을 사실관계 재검증, 법적 근거 협의, 데이터 연동 구조 설계로 다시 연 사례.</p>
+          <div class="metric-row"><div class="metric"><b>동의문</b><span>서비스 이용 동의문 변경 처리</span></div><div class="metric"><b>승인 구조</b><span>데이터 활용 승인·처리방침 반영</span></div><div class="metric"><b>Kafka</b><span>토스폼→코어→인슈 연동 설계</span></div></div>
+          <ul><li>코어 VDI의 고객정보 확인 환경에 직접 접속해 NPS 응답 안의 고객 식별값 존재 여부를 재검증</li><li>“수집 불가”가 아니라 “법인 간 제공 근거 필요” 문제로 제약을 재정의</li><li>토스코어에 데이터 활용 기안을 직접 작성·제출하고, 개인정보 활용 승인에 필요한 사실관계와 처리방침 반영 범위를 정리</li><li>과거 누적 NPS 데이터 이관과 이후 정기 수신을 분리해 적재·연동 구조를 설계</li><li>토스폼→코어 카프카→인슈 카프카 컨슘 흐름을 개발·정책 협의가 가능한 구조로 설계</li><li>CRM 표시 기능은 정책·연동 토대 확보 이후 단계로 진행 중이며 완료로 표현하지 않음</li></ul>
+          <div class="tags"><span class="tag">개인정보 근거</span><span class="tag">데이터 연동</span><span class="tag">플랫폼 정책</span></div>
+        </div>
+      </details>
+      <details class="case" data-group="toss system">
+        <summary><span class="case-num">프로그램 08</span><h3>엑소스피어 PC 보안: 외부 설계사 PC 접근 리스크를 정책·계약·운영으로 닫은 사례</h3><span class="case-meta">보안 · ERP 접근 · 외부 사용자 정책</span></summary>
+        <div class="case-body">
+          <p class="thesis">랜섬웨어 사건 이후 설계사 개인 PC의 내부 시스템 접근 문제를 보안 솔루션, OS/브라우저 정책, JS SDK, 계약·배포 운영으로 통합한 사례.</p>
+          <div class="metric-row"><div class="metric"><b>12.01/12.12</b><span>계약 시작 / 시스템 오픈</span></div><div class="metric"><b>7개</b><span>직접 오픈한 핵심 스레드</span></div><div class="metric"><b>6종</b><span>견적서 비교</span></div></div>
+          <ul><li>랜섬웨어 이후 ERP/CRM 접근 구조의 보안 취약점을 외부 사용자 정책 문제로 재정의</li><li>Windows 10/11 허용, Win7/8.1 개별 안내, 크롬·엣지 최신 -1 버전 허용 등 업무 중단을 줄이는 정책 기준 정리</li><li>JS SDK 방식을 채택해 외부 의존성과 연동 복잡도를 줄이는 방향으로 서버·보안·IT 협의 정렬</li><li>3개월 스탠다드 계약, SDK 연동, 설치 배포, 오류 대응, 1인 다PC 정책 확인까지 운영 기준 관리</li></ul>
+          <div class="tags"><span class="tag">보안 정책</span><span class="tag">권한 기준</span><span class="tag">벤더/계약 운영</span></div>
+        </div>
+      </details>
+      <details class="case" data-group="before">
+        <summary><span class="case-num">프로그램 09</span><h3>집닥: 플랫폼 BM을 숫자와 VOC로 다시 설계</h3><span class="case-meta">BM · VOC · 단위경제성</span></summary>
+        <div class="case-body">
+          <p class="thesis">CAC·LTV·ROI와 계약·민원 데이터를 통해 기존 BM의 한계수익 체감을 진단하고, 고객 DB/파트너 등급제와 신규 상품 방향을 정의한 사례.</p>
+          <div class="metric-row"><div class="metric"><b>5,388건</b><span>계약 분석</span></div><div class="metric"><b>1,010건</b><span>민원 분석</span></div><div class="metric"><b>CAC/LTV/ROI</b><span>BM 분석</span></div><div class="metric"><b>16개</b><span>부분공사 견적 항목</span></div></div>
+          <ul><li>CAC·LTV·ROI, 채널별 성과, 파트너별 전환율로 만성 적자 BM의 한계수익 체감 진단</li><li>고객 DB 등급제와 파트너 등급제로 리드 품질과 파트너 성과를 함께 관리하는 구조 설계</li><li>민원 유형 6개, 강도 3개, 공종 17개, 귀책 2개로 CMS 반영 가능한 분류 체계 제안</li><li>3개년 시스템 로드맵과 전사 OKR을 연결해 플랫폼 BEP 달성 방향에 기여</li><li>코로나 특수로 인한 부분시공 수요 증가를 분석해 부분시공 서비스 신사업 기획으로 연결</li></ul>
+        </div>
+      </details>
+      <details class="case" data-group="before system">
+        <summary><span class="case-num">프로그램 10</span><h3>세인홈시스: 제조 현장 ERP/CRM/FSM을 하나의 운영 시스템으로 구축</h3><span class="case-meta">ERP · CRM · OMS/WMS/TMS · FSM</span></summary>
+        <div class="case-body">
+          <p class="thesis">본사, 공장, 전국 대리점, 설치기사, CS가 흩어져 처리하던 제조 운영을 백오피스 어드민과 FSM 앱으로 통합한 사례.</p>
+          <div class="metric-row"><div class="metric"><b>OMS/WMS/TMS</b><span>어드민 기능</span></div><div class="metric"><b>30명+</b><span>TF 인원</span></div><div class="metric"><b>QR/GPS/서명</b><span>현장 앱 흐름</span></div><div class="metric"><b>-30%</b><span>CS 민원 감소</span></div></div>
+          <ul><li>수기·엑셀로 흩어진 고객, 민원, 재고, 수불, 발주, 설치/AS 데이터를 자체 어드민 시스템으로 통합</li><li>본사·공장·전국 대리점의 주문/재고/배송 흐름을 OMS, WMS, TMS 관점으로 구조화해 자산 가시화 기반 마련</li><li>현장 설치기사 앱은 예약→배정→방문→설치/수리→완료 퍼널로 설계하고 QR/GPS/서명/알림톡 흐름을 연결</li><li>SRS, 데이터셋, 마이그레이션 양식, UAT 시나리오를 직접 작성해 제조 운영 시스템의 산출물 기준을 구체화</li><li>APP/CRM/DB 서버 운영, 일일 백업, 장애 처리 기준, 원본소스 현행화를 포함한 1년 유지보수 계약을 협상·체결하고 Vendor Management 수행</li></ul>
+          <div class="tags"><span class="tag">업무 시스템 구축 PM/PMO</span><span class="tag">FSM 앱</span><span class="tag">UAT·유지보수</span></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="section" id="evidence">
+    <h2 class="section-title is-supporting">그 밖의 실행 경험</h2>
+    <div class="evidence-grid">
+      <article class="evidence"><h3>사용자·운영 데이터 검증</h3><ul><li>CRM 사용률 95%→64.5% 하락 원인을 고객정보·상담 퍼널·DB 활용 리스크로 재정의</li><li>상담 DB 187만 건, 계약 DB 4.2만 건, 집닥 민원 1,010건을 프로그램 판단 근거로 활용</li><li>CRM/ERP/DW 리드타임 지표에서 유효 퍼널 46.7%, 30일 골든타임 70%를 도출하고 컨택 타이밍·후속 분석 로드맵으로 연결</li><li>집닥에서 CAC·LTV·ROI, 파트너별 전환율, 계약·민원 데이터를 분석해 고객 DB 등급제와 파트너 등급제 설계</li></ul></article>
+      <article class="evidence"><h3>재무·정산 데이터 검증</h3><ul><li>IFRS 갱신형 보험 회차역전 3,988건, 약 3.75억 원 규모의 개선 필요 항목을 TF 공유 자료로 정리</li><li>IFRS 표준데이터 차액 원인과 27개월 수입금액 차이를 추적해 정산·회계 데이터 검증 관점 보강</li></ul></article>
+      <article class="evidence"><h3>정책·리스크 대응</h3><ul><li>금소법 비교설명확인서 외부 솔루션과 자체 구축의 비용·운영 리스크 비교</li><li>Android 14/15, Google Play 삭제 위기, ISMS-P, 금융보안원 점검 대응</li><li>엑소스피어 PC 보안 도입에서 OS/브라우저 허용 기준, 모바일 접속 제한, JS SDK 연동 기준을 통합 의사결정</li><li>NPS CRM 연동에서 데이터 활용 승인, 처리방침 반영, 카프카 기반 데이터 연동 흐름을 사실관계 중심으로 정리</li></ul></article>
+      <article class="evidence"><h3>릴리즈 이후 운영</h3><ul><li>세인홈시스 SRS·데이터셋·UAT 시나리오·유지보수 기준 직접 관리</li><li>출시 이후 권한, 장애, 접수 경로, 모니터링까지 프로그램 책임 범위로 관리</li><li>구글챗 라이브 오픈에서 ERP 기준 사업단 소속 권한값으로 기능 노출을 분리하고 설계사·임직원 공지를 별도 설계</li></ul></article>
+      <article class="evidence"><h3>AI 기반 업무 지원</h3><ul><li>AI UW 센터 PoC의 솔루션 검토, 보안 조건, PoC 사용 조건 정리</li><li>인켑 챗봇의 프롬프트 세팅, RAG 데이터셋 구성, Slack 연동 구성</li></ul></article>
+    </div>
+  </section>
+
+  <section class="section" id="fit">
+    <div class="section-label">Best Fit</div>
+    <h2 class="section-title">이런 환경에서 강점이 큽니다</h2>
+    <div class="fit-grid">
+      <article class="fit"><h3>Technical Program Manager</h3><p>여러 조직과 시스템이 얽힌 일을 목적, 구현 범위, 일정, 리스크, 오픈 기준으로 정리해야 하는 환경.</p></article>
+      <article class="fit"><h3>IT 시스템 구축 PM/PMO</h3><p>업무 시스템 구축에서 WBS, UAT, Change Request, Vendor Management, 오픈 이후 운영 기준까지 요구하는 환경.</p></article>
+      <article class="fit"><h3>Product Platform PM</h3><p>기능 현황을 사업·사용자·데이터 관점에서 보고, 업무 흐름을 시스템과 데이터 흐름으로 정리해야 하는 환경.</p></article>
+      <article class="fit"><h3>Business/Data-driven Service PM</h3><p>CAC·LTV·ROI, 전환율, 계약·민원 데이터로 서비스 방향과 운영 우선순위를 정의해야 하는 환경.</p></article>
+      <article class="fit"><h3>Vendor/Legacy Transformation Lead</h3><p>외주, 레거시, 보안, 정책 리스크가 얽힌 프로젝트를 내부 실행 기준과 운영 체계로 전환해야 하는 환경.</p></article>
+      <article class="fit"><h3>Post-release Operations Owner</h3><p>릴리즈 이후 장애 대응, 유지보수, Change Request, 현업 공지 기준까지 관리해야 하는 환경.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="summary">
+    <div class="section-label">Summary</div>
+    <div class="final-box">
+      <p><strong>저는 업무·데이터·권한 흐름이 얽힌 문제를 제품 요구사항과 실행 기준으로 정리해 온 TPM/PM입니다.</strong><br>여러 업무에서 반복해서 증명해 온 역량은 기능 현황을 사업·사용자·데이터 관점에서 분석하고, 구현 범위와 실행 기준을 정리해 외주와 내부 조직이 같은 기준으로 움직이게 만드는 것입니다. 시스템 오픈 이후에도 장애 대응, 유지보수, Change Request, 현업 공지 기준까지 운영 범위로 보고 관리합니다.</p>
+      <div class="hero-actions"><a class="primary" href="mailto:min_jungwon@naver.com">min_jungwon@naver.com</a><a class="ghost" href="/co/tpm/resume/v2.3/">이력서 보기</a></div>
+    </div>
+  </section>
+
+  <footer>Min Jeong Won · Technical Program Manager / Product Platform PM · Codex v2.3 Review</footer>
+</main>
+
+<script>
+const root = document.documentElement;
+const progress = document.getElementById('progress');
+const toggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'light';
+if (savedTheme === 'dark') root.dataset.theme = 'dark';
+toggle.addEventListener('click', () => {
+  const dark = root.dataset.theme !== 'dark';
+  root.dataset.theme = dark ? 'dark' : '';
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+});
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  progress.style.transform = `scaleX(${Math.max(0, Math.min(1, scrollY / max))})`;
+});
+document.querySelectorAll('.filter[data-filter]').forEach(button => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.filter[data-filter]').forEach(b => b.classList.remove('is-active'));
+    button.classList.add('is-active');
+    const filter = button.dataset.filter;
+    document.querySelectorAll('.case').forEach(card => {
+      card.hidden = filter !== 'all' && !card.dataset.group.split(' ').includes(filter);
+    });
+  });
+});
+document.getElementById('expandAll').addEventListener('click', () => {
+  const cards = [...document.querySelectorAll('.case:not([hidden])')];
+  const shouldOpen = cards.some(card => !card.open);
+  cards.forEach(card => card.open = shouldOpen);
+  document.getElementById('expandAll').textContent = shouldOpen ? '모두 닫기' : '모두 열기';
+});
+</script>
+</body>
+</html>
